@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/green_light"
+            android:padding="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/dietTitleText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Opción 1"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:textColor="@color/green_dark" />
+
+            <TextView
+                android:id="@+id/dietBadgeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mejor Costo"
+                android:background="@drawable/badge_background"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:padding="4dp" />
+
+        </LinearLayout>
+
+        <!-- Content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <!-- Composition -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginEnd="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/diet_composition"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/darker_gray"
+                    android:layout_marginBottom="8dp" />
+
+                <LinearLayout
+                    android:id="@+id/compositionLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+
+            <!-- Costs and Emissions -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/costs_and_emissions"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/darker_gray"
+                    android:layout_marginBottom="8dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
+
+                        <!-- Cost per kg -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:background="@drawable/cost_box_blue"
+                            android:padding="8dp"
+                            android:layout_marginEnd="4dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/cost_per_kg"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/blue_dark" />
+
+                            <TextView
+                                android:id="@+id/costPerKgText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="$0.000"
+                                android:textStyle="bold"
+                                android:textSize="14sp"
+                                android:textColor="@color/blue_primary" />
+
+                        </LinearLayout>
+
+                        <!-- Cost per tonne -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:background="@drawable/cost_box_purple"
+                            android:padding="8dp"
+                            android:layout_marginStart="4dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/cost_per_tonne"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/purple_dark" />
+
+                            <TextView
+                                android:id="@+id/costPerTonneText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="$000"
+                                android:textStyle="bold"
+                                android:textSize="14sp"
+                                android:textColor="@color/purple_primary" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="8dp">
+
+                        <!-- Daily cost -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:background="@drawable/cost_box_green"
+                            android:padding="8dp"
+                            android:layout_marginEnd="4dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/daily_cost"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/green_dark" />
+
+                            <TextView
+                                android:id="@+id/dailyCostText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="$0.00"
+                                android:textStyle="bold"
+                                android:textSize="14sp"
+                                android:textColor="@color/green_primary" />
+
+                            <TextView
+                                android:id="@+id/quantityText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="1 animal"
+                                android:textSize="8sp"
+                                android:textColor="@android:color/darker_gray" />
+
+                        </LinearLayout>
+
+                        <!-- Emissions -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:background="@drawable/cost_box_orange"
+                            android:padding="8dp"
+                            android:layout_marginStart="4dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/methane_emissions"
+                                android:textSize="10sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/orange_dark" />
+
+                            <TextView
+                                android:id="@+id/emissionsPerTonneText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="000.0"
+                                android:textStyle="bold"
+                                android:textSize="14sp"
+                                android:textColor="@color/orange_primary" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/g_tonne"
+                                android:textSize="8sp"
+                                android:textColor="@android:color/darker_gray" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <!-- Summary -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/summary_background"
+                        android:padding="8dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/daily_emissions_total"
+                                android:textSize="12sp"
+                                android:textColor="@android:color/darker_gray" />
+
+                            <TextView
+                                android:id="@+id/dailyEmissionsText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="000.0 g CH₄"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/monthly_cost_estimated"
+                                android:textSize="12sp"
+                                android:textColor="@android:color/darker_gray" />
+
+                            <TextView
+                                android:id="@+id/monthlyCostText"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="$00.00"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Footer -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:background="@color/gray_light">
+
+            <Button
+                android:id="@+id/exportBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:text="@string/export_diet"
+                android:textSize="12sp"
+                android:background="@drawable/button_secondary_background"
+                android:textColor="@color/green_dark"
+                android:drawableStart="@drawable/ic_download"
+                android:drawablePadding="4dp"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

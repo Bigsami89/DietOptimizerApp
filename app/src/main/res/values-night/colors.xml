@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Colors - Dark Mode Variants -->
+    <color name="green_primary_dark">#66BB6A</color>
+    <color name="green_light_dark">#2E7D32</color>
+    
+    <color name="blue_primary_dark">#64B5F6</color>
+    
+    <!-- Dark Mode Backgrounds -->
+    <color name="background_dark">#121212</color>
+    <color name="surface_dark">#1E1E1E</color>
+    <color name="on_surface_dark">#E0E0E0</color>
+    <color name="on_background_dark">#E0E0E0</color>
+    
+    <!-- Adapted colors for dark mode -->
+    <color name="gray_light_dark">#2C2C2C</color>
+    <color name="gray_medium_dark">#404040</color>
+    <color name="cost_box_blue_bg">#1A237E</color>
+    <color name="cost_box_purple_bg">#4A148C</color>
+    <color name="cost_box_green_bg">#1B5E20</color>
+    <color name="cost_box_orange_bg">#E65100</color>
+</resources>

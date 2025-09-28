@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DietOptimizerapp</string>
+    
+    <!-- Main Activity -->
+    <string name="title_diet_optimizer">Optimizador de Dietas Ganaderas</string>
+    <string name="animal_configuration">Configuración del Animal</string>
+    <string name="available_ingredients">Ingredientes Disponibles</string>
+    
+    <!-- Form Labels -->
+    <string name="animal_species">Especie Animal</string>
+    <string name="number_of_animals">Número de Animales</string>
+    <string name="diet_type">Tipo de Dieta</string>
+    <string name="add_ingredient">Agregar Ingrediente</string>
+    <string name="selected_ingredients">Ingredientes Seleccionados</string>
+    <string name="no_ingredients_selected">No hay ingredientes seleccionados</string>
+    
+    <!-- Buttons -->
+    <string name="calculate_optimal_diets">Calcular Dietas Óptimas</string>
+    <string name="export_diet">Exportar Dieta</string>
+    <string name="remove">Eliminar</string>
+    
+    <!-- Diet Types -->
+    <string name="maintenance">Mantenimiento</string>
+    <string name="growth">Crecimiento</string>
+    <string name="lactation">Lactación</string>
+    <string name="fattening">Engorde</string>
+    
+    <!-- Results -->
+    <string name="diet_composition">Composición de la Dieta</string>
+    <string name="costs_and_emissions">Costos y Emisiones</string>
+    <string name="cost_per_kg">Costo por Kg</string>
+    <string name="cost_per_tonne">Costo por Tonelada</string>
+    <string name="daily_cost">Costo Diario</string>
+    <string name="methane_emissions">Emisiones CH₄</string>
+    <string name="daily_emissions_total">Emisiones diarias totales:</string>
+    <string name="monthly_cost_estimated">Costo mensual estimado:</string>
+    
+    <!-- Status Messages -->
+    <string name="calculating">Calculando dietas óptimas...</string>
+    <string name="configure_parameters">Configura los parámetros y presiona calcular</string>
+    <string name="diets_found">Se encontraron %d dietas óptimas</string>
+    <string name="no_feasible_diets">No se encontraron dietas factibles</string>
+    <string name="calculation_error">Error en el cálculo</string>
+    
+    <!-- Validation Messages -->
+    <string name="select_animal_and_ingredients">Selecciona un animal y al menos un ingrediente</string>
+    <string name="select_ingredient">Selecciona un ingrediente</string>
+    
+    <!-- Units -->
+    <string name="kg_day">kg/día</string>
+    <string name="g_tonne">g/tonelada</string>
+    <string name="animals">animales</string>
+    <string name="animal">animal</string>
+    
+    <!-- Additional -->
+    <string name="ingredient_info">Información del ingrediente</string>
+    <string name="ingredients_selected">Ingredientes seleccionados: %d</string>
+    <string name="select_all">Seleccionar todos</string>
+    <string name="deselect_all">Deseleccionar todos</string>
+    <string name="search_ingredients">Buscar ingredientes...</string>
+    <string name="nutritional_information">Información Nutricional</string>
+</resources>
