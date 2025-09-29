@@ -95,83 +95,116 @@ public class MainActivity extends AppCompatActivity {
     private List<Ingredient> createAvailableIngredients() {
         List<Ingredient> ingredients = new ArrayList<>();
 
-        // Maiz Grano -> MaizGrano
+        // ============ CONCENTRADOS ENERGÉTICOS (No forrajes) ============
+
+        // Maíz Grano - CONCENTRADO ENERGÉTICO
         Map<String, Double> maizNutrients = new HashMap<>();
-        maizNutrients.put("GE", 4.44); // Mcal/kg MS
-        maizNutrients.put("CP", 9.0); // %
-        maizNutrients.put("TDN", 90.0); // %
-        maizNutrients.put("NEm", 2.21); // Mcal/kg MS
-        maizNutrients.put("Ca", 0.02); // %
-        maizNutrients.put("P", 0.31); // %
-        maizNutrients.put("NDF", 10.5); // %
-        ingredients.add(new Ingredient("MaizGrano", 0.22, maizNutrients));
+        maizNutrients.put("GE", 4.44);     // Mcal/kg MS
+        maizNutrients.put("CP", 9.0);      // %
+        maizNutrients.put("TDN", 90.0);    // %
+        maizNutrients.put("NEm", 2.21);    // Mcal/kg MS
+        maizNutrients.put("Ca", 0.02);     // %
+        maizNutrients.put("P", 0.31);      // %
+        maizNutrients.put("NDF", 10.5);    // %
+        maizNutrients.put("Starch", 72.0); // % - NUEVO: Contenido de almidón
+        maizNutrients.put("Fat", 3.8);     // % - NUEVO: Contenido de grasa
+        Ingredient maiz = new Ingredient("MaizGrano", 0.22, maizNutrients);
+        maiz.setForage(false); // NO es forraje
+        ingredients.add(maiz);
 
-// Harina de Soja -> HarinaSoja (48.5% PB)
+        // Harina de Soja - CONCENTRADO PROTEICO
         Map<String, Double> sojaNutrients = new HashMap<>();
-        sojaNutrients.put("GE", 4.71); // Mcal/kg MS
-        sojaNutrients.put("CP", 50.0); // % (Ajustado a 48.5% PB en base húmeda, que es ~50% en MS)
-        sojaNutrients.put("TDN", 85.0); // %
-        sojaNutrients.put("NEm", 2.08); // Mcal/kg MS
-        sojaNutrients.put("Ca", 0.38); // %
-        sojaNutrients.put("P", 0.76); // %
-        sojaNutrients.put("NDF", 7.5); // %
-        ingredients.add(new Ingredient("HarinaSoja", 0.48, sojaNutrients));
+        sojaNutrients.put("GE", 4.71);
+        sojaNutrients.put("CP", 50.0);
+        sojaNutrients.put("TDN", 85.0);
+        sojaNutrients.put("NEm", 2.08);
+        sojaNutrients.put("Ca", 0.38);
+        sojaNutrients.put("P", 0.76);
+        sojaNutrients.put("NDF", 7.5);
+        sojaNutrients.put("Starch", 5.0);  // Bajo en almidón
+        sojaNutrients.put("Fat", 1.5);
+        Ingredient soja = new Ingredient("HarinaSoja", 0.48, sojaNutrients);
+        soja.setForage(false);
+        ingredients.add(soja);
 
-// Heno de Alfalfa -> HenoAlfalfa (Calidad media)
-        Map<String, Double> alfalfaNutrients = new HashMap<>();
-        alfalfaNutrients.put("GE", 4.20); // Mcal/kg MS
-        alfalfaNutrients.put("CP", 18.0); // %
-        alfalfaNutrients.put("TDN", 62.0); // %
-        alfalfaNutrients.put("NEm", 1.35); // Mcal/kg MS
-        alfalfaNutrients.put("Ca", 1.45); // %
-        alfalfaNutrients.put("P", 0.26); // %
-        alfalfaNutrients.put("NDF", 44.0); // %
-        ingredients.add(new Ingredient("HenoAlfalfa", 0.15, alfalfaNutrients));
-
-// Granos Destileria (DDGS) -> DDGS (Maíz)
+        // DDGS - SUBPRODUCTO ENERGÉTICO-PROTEICO
         Map<String, Double> ddgsNutrients = new HashMap<>();
-        ddgsNutrients.put("GE", 5.30); // Mcal/kg MS - Valor más alto por la concentración de grasa.
-        ddgsNutrients.put("CP", 31.0); // %
-        ddgsNutrients.put("TDN", 89.0); // %
-        ddgsNutrients.put("NEm", 2.15); // Mcal/kg MS
-        ddgsNutrients.put("Ca", 0.07); // % - Valor real es bastante bajo.
-        ddgsNutrients.put("P", 0.82); // % - Fuente rica en fósforo.
-        ddgsNutrients.put("NDF", 38.0); // %
-        ingredients.add(new Ingredient("DDGS", 0.25, ddgsNutrients));
+        ddgsNutrients.put("GE", 5.30);
+        ddgsNutrients.put("CP", 31.0);
+        ddgsNutrients.put("TDN", 89.0);
+        ddgsNutrients.put("NEm", 2.15);
+        ddgsNutrients.put("Ca", 0.07);
+        ddgsNutrients.put("P", 0.82);
+        ddgsNutrients.put("NDF", 38.0);    // Moderado en fibra
+        ddgsNutrients.put("Starch", 5.0);  // Bajo - fermentado
+        ddgsNutrients.put("Fat", 10.0);    // Alto en grasa - IMPORTANTE para metano
+        Ingredient ddgs = new Ingredient("DDGS", 0.25, ddgsNutrients);
+        ddgs.setForage(false); // Aunque tiene NDF, no es forraje estructural
+        ingredients.add(ddgs);
 
-// Premix Mineral-Vit -> PremixMineral
-// Los valores pueden variar enormemente. Estos representan un premix común para bovinos.
+        // Salvado de Trigo - SUBPRODUCTO FIBROSO
+        Map<String, Double> salvadoNutrients = new HashMap<>();
+        salvadoNutrients.put("GE", 4.52);
+        salvadoNutrients.put("CP", 17.0);
+        salvadoNutrients.put("TDN", 70.0);
+        salvadoNutrients.put("NEm", 1.62);
+        salvadoNutrients.put("Ca", 0.13);
+        salvadoNutrients.put("P", 1.18);
+        salvadoNutrients.put("NDF", 45.0);
+        salvadoNutrients.put("Starch", 20.0);
+        salvadoNutrients.put("Fat", 4.5);
+        Ingredient salvado = new Ingredient("SalvadoTrigo", 0.20, salvadoNutrients);
+        salvado.setForage(false); // Subproducto, no forraje
+        ingredients.add(salvado);
+
+        // Melaza de Caña - PALATABILIZANTE ENERGÉTICO
+        Map<String, Double> melazaNutrients = new HashMap<>();
+        melazaNutrients.put("GE", 4.10);
+        melazaNutrients.put("CP", 7.5);
+        melazaNutrients.put("TDN", 78.0);
+        melazaNutrients.put("NEm", 1.85);
+        melazaNutrients.put("Ca", 1.0);
+        melazaNutrients.put("P", 0.08);
+        melazaNutrients.put("NDF", 0.0);   // Sin fibra estructural
+        melazaNutrients.put("Starch", 0.0); // Azúcares simples
+        melazaNutrients.put("Fat", 0.1);
+        Ingredient melaza = new Ingredient("MelazaCana", 0.18, melazaNutrients);
+        melaza.setForage(false);
+        ingredients.add(melaza);
+
+        // ============ FORRAJES (Alto NDF, baja energía) ============
+
+        // Heno de Alfalfa - FORRAJE DE ALTA CALIDAD
+        Map<String, Double> alfalfaNutrients = new HashMap<>();
+        alfalfaNutrients.put("GE", 4.20);
+        alfalfaNutrients.put("CP", 18.0);
+        alfalfaNutrients.put("TDN", 62.0);
+        alfalfaNutrients.put("NEm", 1.35);
+        alfalfaNutrients.put("Ca", 1.45);
+        alfalfaNutrients.put("P", 0.26);
+        alfalfaNutrients.put("NDF", 44.0);  // Alto - Típico de forraje
+        alfalfaNutrients.put("Starch", 2.0); // Muy bajo
+        alfalfaNutrients.put("Fat", 2.5);
+        Ingredient alfalfa = new Ingredient("HenoAlfalfa", 0.15, alfalfaNutrients);
+        alfalfa.setForage(true); // *** FORRAJE ***
+        ingredients.add(alfalfa);
+
+        // ============ SUPLEMENTOS MINERALES ============
+
+        // Premix Mineral-Vitamínico
         Map<String, Double> premixNutrients = new HashMap<>();
         premixNutrients.put("GE", 0.0);
         premixNutrients.put("CP", 0.0);
         premixNutrients.put("TDN", 0.0);
         premixNutrients.put("NEm", 0.0);
-        premixNutrients.put("Ca", 24.0); // % - Común en premezclas altas en calcio.
-        premixNutrients.put("P", 12.0); // % - Ratio Ca:P de 2:1 es típico.
+        premixNutrients.put("Ca", 24.0);   // Fuente concentrada de Ca
+        premixNutrients.put("P", 12.0);    // Fuente concentrada de P
         premixNutrients.put("NDF", 0.0);
-        ingredients.add(new Ingredient("PremixMineral", 1.50, premixNutrients));
-
-// Melaza de Caña -> MelazaCana
-        Map<String, Double> melazaNutrients = new HashMap<>();
-        melazaNutrients.put("GE", 4.10); // Mcal/kg MS
-        melazaNutrients.put("CP", 7.5); // % - Puede variar, pero 4% es bajo.
-        melazaNutrients.put("TDN", 78.0); // %
-        melazaNutrients.put("NEm", 1.85); // Mcal/kg MS
-        melazaNutrients.put("Ca", 1.0); // %
-        melazaNutrients.put("P", 0.08); // %
-        melazaNutrients.put("NDF", 0.0); // % - No contiene fibra estructural.
-        ingredients.add(new Ingredient("MelazaCana", 0.18, melazaNutrients));
-
-// Salvado de Trigo -> SalvadoTrigo
-        Map<String, Double> salvadoNutrients = new HashMap<>();
-        salvadoNutrients.put("GE", 4.52); // Mcal/kg MS
-        salvadoNutrients.put("CP", 17.0); // %
-        salvadoNutrients.put("TDN", 70.0); // %
-        salvadoNutrients.put("NEm", 1.62); // Mcal/kg MS
-        salvadoNutrients.put("Ca", 0.13); // %
-        salvadoNutrients.put("P", 1.18); // % - Muy alto en fósforo, un punto clave de este ingrediente.
-        salvadoNutrients.put("NDF", 45.0); // %
-        ingredients.add(new Ingredient("SalvadoTrigo", 0.20, salvadoNutrients));
+        premixNutrients.put("Starch", 0.0);
+        premixNutrients.put("Fat", 0.0);
+        Ingredient premix = new Ingredient("PremixMineral", 1.50, premixNutrients);
+        premix.setForage(false);
+        ingredients.add(premix);
 
         return ingredients;
     }

@@ -1,6 +1,6 @@
 #pragma once
 #include "IOptimizer.h"
-#include "ApiRequest.h" 
+#include "ApiRequest.h"
 
 class RationCalculator {
 public:
