@@ -16,6 +16,7 @@ public class JsonBuilder {
             // Animal requirements
             JSONObject animalReqs = new JSONObject();
             animalReqs.put("DMI_kg_day", animal.getDmiKgDay());
+            animalReqs.put("body_weight_kg", animal.getBodyWeightKg()); // NUEVO
 
             // Adjust requirements based on diet type
             Map<String, Double> minReqs = adjustRequirementsForDietType(animal.getMinRequirements(), dietType, true);
@@ -35,14 +36,14 @@ public class JsonBuilder {
             animalReqs.put("max_requirements", maxRequirements);
             root.put("animal_requirements", animalReqs);
 
-            // Available ingredients - CORREGIR AQUÍ
+            // Available ingredients - MEJORADO con información de forraje
             JSONArray ingredientsArray = new JSONArray();
             for (Ingredient ingredient : ingredients) {
-                // CAMBIAR: usar selectedIngredients o verificar isSelected()
-                if (ingredient.isSelected()) {  // Solo ingredientes seleccionados
+                if (ingredient.isSelected()) {
                     JSONObject ingObj = new JSONObject();
                     ingObj.put("name", ingredient.getName());
                     ingObj.put("cost", ingredient.getCost());
+                    ingObj.put("is_forage", ingredient.isForage()); // NUEVO: Información crítica para metano
 
                     JSONObject nutrients = new JSONObject();
                     for (Map.Entry<String, Double> nutrient : ingredient.getNutrients().entrySet()) {
@@ -64,34 +65,36 @@ public class JsonBuilder {
     }
 
     private static Map<String, Double> adjustRequirementsForDietType(Map<String, Double> baseReqs, String dietType, boolean isMinimum) {
-        // Clone the map
         Map<String, Double> adjustedReqs = new java.util.HashMap<>(baseReqs);
 
-        // Adjust based on diet type
         switch (dietType.toLowerCase()) {
+            case "crecimiento":
             case "growth":
                 if (isMinimum) {
-                    adjustedReqs.put("CP", adjustedReqs.getOrDefault("CP", 14.0) * 1.15); // +15% proteína
-                    adjustedReqs.put("NEm", adjustedReqs.getOrDefault("NEm", 1.6) * 1.10); // +10% energía
+                    adjustedReqs.put("CP", adjustedReqs.getOrDefault("CP", 14.0) * 1.15);
+                    adjustedReqs.put("NEm", adjustedReqs.getOrDefault("NEm", 1.6) * 1.10);
                 }
                 break;
 
+            case "lactación":
             case "lactation":
                 if (isMinimum) {
-                    adjustedReqs.put("CP", adjustedReqs.getOrDefault("CP", 14.0) * 1.25); // +25% proteína
-                    adjustedReqs.put("NEm", adjustedReqs.getOrDefault("NEm", 1.6) * 1.20); // +20% energía
-                    adjustedReqs.put("Ca", adjustedReqs.getOrDefault("Ca", 0.4) * 1.40); // +40% calcio
+                    adjustedReqs.put("CP", adjustedReqs.getOrDefault("CP", 14.0) * 1.25);
+                    adjustedReqs.put("NEm", adjustedReqs.getOrDefault("NEm", 1.6) * 1.20);
+                    adjustedReqs.put("Ca", adjustedReqs.getOrDefault("Ca", 0.4) * 1.40);
                 }
                 break;
 
+            case "engorde":
             case "fattening":
                 if (isMinimum) {
-                    adjustedReqs.put("NEm", adjustedReqs.getOrDefault("NEm", 1.6) * 1.15); // +15% energía
+                    adjustedReqs.put("NEm", adjustedReqs.getOrDefault("NEm", 1.6) * 1.15);
                 } else {
-                    adjustedReqs.put("NDF", adjustedReqs.getOrDefault("NDF", 35.0) * 0.85); // -15% fibra
+                    adjustedReqs.put("NDF", adjustedReqs.getOrDefault("NDF", 35.0) * 0.85);
                 }
                 break;
 
+            case "mantenimiento":
             case "maintenance":
             default:
                 // No adjustments needed

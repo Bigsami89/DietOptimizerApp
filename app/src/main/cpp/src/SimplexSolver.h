@@ -8,6 +8,7 @@ public:
             const std::map<std::string, double>& maxNutrients,
             double costWeight,
             double methaneWeight,
-            double DMI_kg_day // <-- AÑADE ESTA LÍNEA
-    ) override;
+            double DMI_kg_day,
+            double body_weight_kg = 0.0 // NUEVO
+    ) override ;
 };

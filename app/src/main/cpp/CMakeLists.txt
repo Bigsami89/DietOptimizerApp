@@ -23,6 +23,7 @@ endif()
 
 # Directorios de includes
 include_directories(include)
+include_directories(src/main/cpp/eigen/Eigen)
 
 # Encontrar librerías del sistema Android requeridas
 find_library(log-lib log)
