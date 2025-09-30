@@ -1,0 +1,28 @@
+{
+  "diet_types": [
+    {
+      "id": "maintenance",
+      "name": "Mantenimiento",
+      "description": "Balance energético para sostener peso corporal",
+      "recommended_for": ["beef", "dairy", "sheep", "goat"]
+    },
+    {
+      "id": "lactation",
+      "name": "Lactación",
+      "description": "Incremento de energía y proteína para producción de leche",
+      "recommended_for": ["dairy"]
+    },
+    {
+      "id": "growth",
+      "name": "Crecimiento",
+      "description": "Optimización de ganancia diaria para animales jóvenes",
+      "recommended_for": ["beef", "sheep", "goat"]
+    },
+    {
+      "id": "fattening",
+      "name": "Engorde",
+      "description": "Alta energía para finalización de animales de carne",
+      "recommended_for": ["beef", "sheep"]
+    }
+  ]
+}
